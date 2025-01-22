@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ParkingDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Gate">
+    <Key>
+      <PropertyRef Name="GateId" />
+    </Key>
+    <Property Name="GateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TotalSpaces" Type="Int32" />
+    <NavigationProperty Name="ParkingSpaces" Relationship="Self.FK__ParkingSp__GateI__38996AB5" FromRole="Gates" ToRole="ParkingSpaces" />
+  </EntityType>
+  <EntityType Name="ParkedVehicle">
+    <Key>
+      <PropertyRef Name="ParkingId" />
+    </Key>
+    <Property Name="ParkingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VehicleNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SpaceId" Type="Int32" />
+    <Property Name="StartTime" Type="DateTime" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ParkingSpace" Relationship="Self.FK__ParkedVeh__Space__3D5E1FD2" FromRole="ParkedVehicles" ToRole="ParkingSpaces" />
+  </EntityType>
+  <EntityType Name="ParkingRate">
+    <Key>
+      <PropertyRef Name="RateId" />
+    </Key>
+    <Property Name="RateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HourlyRate" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="PenaltyRate" Type="Decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="ParkingSpace">
+    <Key>
+      <PropertyRef Name="SpaceId" />
+    </Key>
+    <Property Name="SpaceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GateId" Type="Int32" />
+    <Property Name="IsOccupied" Type="Boolean" />
+    <NavigationProperty Name="Gate" Relationship="Self.FK__ParkingSp__GateI__38996AB5" FromRole="ParkingSpaces" ToRole="Gates" />
+    <NavigationProperty Name="ParkedVehicles" Relationship="Self.FK__ParkedVeh__Space__3D5E1FD2" FromRole="ParkingSpaces" ToRole="ParkedVehicles" />
+  </EntityType>
+  <Association Name="FK__ParkingSp__GateI__38996AB5">
+    <End Role="Gates" Type="Self.Gate" Multiplicity="0..1" />
+    <End Role="ParkingSpaces" Type="Self.ParkingSpace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gates">
+        <PropertyRef Name="GateId" />
+      </Principal>
+      <Dependent Role="ParkingSpaces">
+        <PropertyRef Name="GateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ParkedVeh__Space__3D5E1FD2">
+    <End Role="ParkingSpaces" Type="Self.ParkingSpace" Multiplicity="0..1" />
+    <End Role="ParkedVehicles" Type="Self.ParkedVehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ParkingSpaces">
+        <PropertyRef Name="SpaceId" />
+      </Principal>
+      <Dependent Role="ParkedVehicles">
+        <PropertyRef Name="SpaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ParkingDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Gates" EntityType="Self.Gate" />
+    <EntitySet Name="ParkedVehicles" EntityType="Self.ParkedVehicle" />
+    <EntitySet Name="ParkingRates" EntityType="Self.ParkingRate" />
+    <EntitySet Name="ParkingSpaces" EntityType="Self.ParkingSpace" />
+    <AssociationSet Name="FK__ParkingSp__GateI__38996AB5" Association="Self.FK__ParkingSp__GateI__38996AB5">
+      <End Role="Gates" EntitySet="Gates" />
+      <End Role="ParkingSpaces" EntitySet="ParkingSpaces" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ParkedVeh__Space__3D5E1FD2" Association="Self.FK__ParkedVeh__Space__3D5E1FD2">
+      <End Role="ParkingSpaces" EntitySet="ParkingSpaces" />
+      <End Role="ParkedVehicles" EntitySet="ParkedVehicles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ParkingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Gates">
+          <Key>
+            <PropertyRef Name="GateId" />
+          </Key>
+          <Property Name="GateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GateName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalSpaces" Type="int" />
+        </EntityType>
+        <EntityType Name="ParkedVehicles">
+          <Key>
+            <PropertyRef Name="ParkingId" />
+          </Key>
+          <Property Name="ParkingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="SpaceId" Type="int" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ParkingRates">
+          <Key>
+            <PropertyRef Name="RateId" />
+          </Key>
+          <Property Name="RateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HourlyRate" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="PenaltyRate" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="ParkingSpaces">
+          <Key>
+            <PropertyRef Name="SpaceId" />
+          </Key>
+          <Property Name="SpaceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GateId" Type="int" />
+          <Property Name="IsOccupied" Type="bit" />
+        </EntityType>
+        <Association Name="FK__ParkedVeh__Space__3D5E1FD2">
+          <End Role="ParkingSpaces" Type="Self.ParkingSpaces" Multiplicity="0..1" />
+          <End Role="ParkedVehicles" Type="Self.ParkedVehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParkingSpaces">
+              <PropertyRef Name="SpaceId" />
+            </Principal>
+            <Dependent Role="ParkedVehicles">
+              <PropertyRef Name="SpaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ParkingSp__GateI__38996AB5">
+          <End Role="Gates" Type="Self.Gates" Multiplicity="0..1" />
+          <End Role="ParkingSpaces" Type="Self.ParkingSpaces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gates">
+              <PropertyRef Name="GateId" />
+            </Principal>
+            <Dependent Role="ParkingSpaces">
+              <PropertyRef Name="GateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ParkingDBModelStoreContainer">
+          <EntitySet Name="Gates" EntityType="Self.Gates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParkedVehicles" EntityType="Self.ParkedVehicles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParkingRates" EntityType="Self.ParkingRates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParkingSpaces" EntityType="Self.ParkingSpaces" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ParkedVeh__Space__3D5E1FD2" Association="Self.FK__ParkedVeh__Space__3D5E1FD2">
+            <End Role="ParkingSpaces" EntitySet="ParkingSpaces" />
+            <End Role="ParkedVehicles" EntitySet="ParkedVehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ParkingSp__GateI__38996AB5" Association="Self.FK__ParkingSp__GateI__38996AB5">
+            <End Role="Gates" EntitySet="Gates" />
+            <End Role="ParkingSpaces" EntitySet="ParkingSpaces" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ParkingDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Gate">
+          <Key>
+            <PropertyRef Name="GateId" />
+          </Key>
+          <Property Name="GateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalSpaces" Type="Int32" />
+          <NavigationProperty Name="ParkingSpaces" Relationship="Self.FK__ParkingSp__GateI__38996AB5" FromRole="Gates" ToRole="ParkingSpaces" />
+        </EntityType>
+        <EntityType Name="ParkedVehicle">
+          <Key>
+            <PropertyRef Name="ParkingId" />
+          </Key>
+          <Property Name="ParkingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SpaceId" Type="Int32" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ParkingSpace" Relationship="Self.FK__ParkedVeh__Space__3D5E1FD2" FromRole="ParkedVehicles" ToRole="ParkingSpaces" />
+        </EntityType>
+        <EntityType Name="ParkingRate">
+          <Key>
+            <PropertyRef Name="RateId" />
+          </Key>
+          <Property Name="RateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HourlyRate" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="PenaltyRate" Type="Decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="ParkingSpace">
+          <Key>
+            <PropertyRef Name="SpaceId" />
+          </Key>
+          <Property Name="SpaceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GateId" Type="Int32" />
+          <Property Name="IsOccupied" Type="Boolean" />
+          <NavigationProperty Name="Gate" Relationship="Self.FK__ParkingSp__GateI__38996AB5" FromRole="ParkingSpaces" ToRole="Gates" />
+          <NavigationProperty Name="ParkedVehicles" Relationship="Self.FK__ParkedVeh__Space__3D5E1FD2" FromRole="ParkingSpaces" ToRole="ParkedVehicles" />
+        </EntityType>
+        <Association Name="FK__ParkingSp__GateI__38996AB5">
+          <End Role="Gates" Type="Self.Gate" Multiplicity="0..1" />
+          <End Role="ParkingSpaces" Type="Self.ParkingSpace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gates">
+              <PropertyRef Name="GateId" />
+            </Principal>
+            <Dependent Role="ParkingSpaces">
+              <PropertyRef Name="GateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ParkedVeh__Space__3D5E1FD2">
+          <End Role="ParkingSpaces" Type="Self.ParkingSpace" Multiplicity="0..1" />
+          <End Role="ParkedVehicles" Type="Self.ParkedVehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParkingSpaces">
+              <PropertyRef Name="SpaceId" />
+            </Principal>
+            <Dependent Role="ParkedVehicles">
+              <PropertyRef Name="SpaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ParkingDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Gates" EntityType="Self.Gate" />
+          <EntitySet Name="ParkedVehicles" EntityType="Self.ParkedVehicle" />
+          <EntitySet Name="ParkingRates" EntityType="Self.ParkingRate" />
+          <EntitySet Name="ParkingSpaces" EntityType="Self.ParkingSpace" />
+          <AssociationSet Name="FK__ParkingSp__GateI__38996AB5" Association="Self.FK__ParkingSp__GateI__38996AB5">
+            <End Role="Gates" EntitySet="Gates" />
+            <End Role="ParkingSpaces" EntitySet="ParkingSpaces" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ParkedVeh__Space__3D5E1FD2" Association="Self.FK__ParkedVeh__Space__3D5E1FD2">
+            <End Role="ParkingSpaces" EntitySet="ParkingSpaces" />
+            <End Role="ParkedVehicles" EntitySet="ParkedVehicles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ParkingDBModelStoreContainer" CdmEntityContainer="ParkingDBEntities">
+          <EntitySetMapping Name="Gates">
+            <EntityTypeMapping TypeName="ParkingDBModel.Gate">
+              <MappingFragment StoreEntitySet="Gates">
+                <ScalarProperty Name="GateId" ColumnName="GateId" />
+                <ScalarProperty Name="GateName" ColumnName="GateName" />
+                <ScalarProperty Name="TotalSpaces" ColumnName="TotalSpaces" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParkedVehicles">
+            <EntityTypeMapping TypeName="ParkingDBModel.ParkedVehicle">
+              <MappingFragment StoreEntitySet="ParkedVehicles">
+                <ScalarProperty Name="ParkingId" ColumnName="ParkingId" />
+                <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
+                <ScalarProperty Name="SpaceId" ColumnName="SpaceId" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParkingRates">
+            <EntityTypeMapping TypeName="ParkingDBModel.ParkingRate">
+              <MappingFragment StoreEntitySet="ParkingRates">
+                <ScalarProperty Name="RateId" ColumnName="RateId" />
+                <ScalarProperty Name="HourlyRate" ColumnName="HourlyRate" />
+                <ScalarProperty Name="PenaltyRate" ColumnName="PenaltyRate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParkingSpaces">
+            <EntityTypeMapping TypeName="ParkingDBModel.ParkingSpace">
+              <MappingFragment StoreEntitySet="ParkingSpaces">
+                <ScalarProperty Name="SpaceId" ColumnName="SpaceId" />
+                <ScalarProperty Name="GateId" ColumnName="GateId" />
+                <ScalarProperty Name="IsOccupied" ColumnName="IsOccupied" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

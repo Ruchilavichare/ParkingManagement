@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ParkingDBModelStoreContainer" CdmEntityContainer="ParkingDBEntities">
+    <EntitySetMapping Name="Gates">
+      <EntityTypeMapping TypeName="ParkingDBModel.Gate">
+        <MappingFragment StoreEntitySet="Gates">
+          <ScalarProperty Name="GateId" ColumnName="GateId" />
+          <ScalarProperty Name="GateName" ColumnName="GateName" />
+          <ScalarProperty Name="TotalSpaces" ColumnName="TotalSpaces" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParkedVehicles">
+      <EntityTypeMapping TypeName="ParkingDBModel.ParkedVehicle">
+        <MappingFragment StoreEntitySet="ParkedVehicles">
+          <ScalarProperty Name="ParkingId" ColumnName="ParkingId" />
+          <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
+          <ScalarProperty Name="SpaceId" ColumnName="SpaceId" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParkingRates">
+      <EntityTypeMapping TypeName="ParkingDBModel.ParkingRate">
+        <MappingFragment StoreEntitySet="ParkingRates">
+          <ScalarProperty Name="RateId" ColumnName="RateId" />
+          <ScalarProperty Name="HourlyRate" ColumnName="HourlyRate" />
+          <ScalarProperty Name="PenaltyRate" ColumnName="PenaltyRate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParkingSpaces">
+      <EntityTypeMapping TypeName="ParkingDBModel.ParkingSpace">
+        <MappingFragment StoreEntitySet="ParkingSpaces">
+          <ScalarProperty Name="SpaceId" ColumnName="SpaceId" />
+          <ScalarProperty Name="GateId" ColumnName="GateId" />
+          <ScalarProperty Name="IsOccupied" ColumnName="IsOccupied" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
