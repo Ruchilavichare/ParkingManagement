@@ -60,6 +60,24 @@ namespace ParkingManagentSystem
         protected global::System.Web.UI.WebControls.Button btnParkVehicle;
 
         /// <summary>
+        /// btnGetFreeTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGetFreeTime;
+
+        /// <summary>
+        /// lblEstimatedFreeTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEstimatedFreeTime;
+
+        /// <summary>
         /// txtParkingId control.
         /// </summary>
         /// <remarks>

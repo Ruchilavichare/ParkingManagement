@@ -10,3 +10,15 @@ C:\Users\Ruchila\source\repos\ParkingManagement\ParkingSystem.BLL\obj\Debug\Park
 C:\Users\Ruchila\source\repos\ParkingManagement\ParkingSystem.BLL\obj\Debug\ParkingSystem.BLL.dll
 C:\Users\Ruchila\source\repos\ParkingManagement\ParkingSystem.BLL\obj\Debug\ParkingSystem.BLL.pdb
 C:\Users\Ruchila\source\repos\ParkingManagement\ParkingSystem.BLL\obj\Debug\ParkingS.53E97A32.Up2Date
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.BLL\bin\Debug\ParkingSystem.BLL.dll
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.BLL\bin\Debug\ParkingSystem.BLL.pdb
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.BLL\bin\Debug\ParkingSystem.DAL.dll
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.BLL\bin\Debug\EntityFramework.dll
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.BLL\bin\Debug\ParkingSystem.DAL.pdb
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.BLL\bin\Debug\ParkingSystem.DAL.dll.config
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.BLL\bin\Debug\EntityFramework.xml
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.BLL\obj\Debug\ParkingSystem.BLL.csproj.AssemblyReference.cache
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.BLL\obj\Debug\ParkingSystem.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.BLL\obj\Debug\ParkingS.53E97A32.Up2Date
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.BLL\obj\Debug\ParkingSystem.BLL.dll
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.BLL\obj\Debug\ParkingSystem.BLL.pdb

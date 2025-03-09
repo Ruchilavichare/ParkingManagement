@@ -108,5 +108,14 @@ namespace ParkingSystem.DAL
 
             return totalCharge ?? 0;
         }
+        public DateTime? GetEstimatedFreeTime(int spaceID)
+        {
+            var nextAvailable = _dbContext.ParkedVehicles
+                                .Where(v => v.SpaceId == spaceID && v.EndTime != null)
+                                .OrderBy(v => v.EndTime)
+                                .Select(v => v.EndTime)
+                                .FirstOrDefault();
+            return nextAvailable;
+        }
     }
 }

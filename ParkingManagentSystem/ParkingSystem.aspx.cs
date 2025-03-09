@@ -22,7 +22,7 @@ namespace ParkingManagentSystem
         {
             if (!IsPostBack)
             {
-                LoadGates();
+                LoadGates();                
             }
         }
 
@@ -57,7 +57,7 @@ namespace ParkingManagentSystem
                 ShowMessage($"Error: {ex.Message}");
             }
         }
-        
+
         public void loadSpaceInfo(object sender, EventArgs e)
         {
             try
@@ -69,6 +69,19 @@ namespace ParkingManagentSystem
                 ddlSpace.DataValueField = "SpaceId";
                 ddlSpace.DataBind();
                 ddlSpace.Items.Insert(0, new ListItem("Select SpaceId", "0"));
+
+                if (ddlSpace.Items.Count < 2)
+                {
+                    btnParkVehicle.Visible = false;
+                    btnGetFreeTime.Visible = true;
+                    
+                }
+                else
+                {
+                    btnParkVehicle.Visible = true;
+                    btnGetFreeTime.Visible = false;
+                    //lblEstimatedFreeTime.Text = "Please select a valid gate.";
+                }
             }
             catch (Exception ex)
             {
@@ -96,6 +109,15 @@ namespace ParkingManagentSystem
         {
             lblMessage.Text = message;
             lblMessage.Visible = true;
+        }
+
+        protected void btnGetFreeTime_Click(object sender, EventArgs e)
+        {
+            int spaceID = int.Parse(ddlSpace.SelectedValue);
+            DateTime? estimatedTime = _parkingService.GetEstimatedFreeTime(spaceID);
+            lblEstimatedFreeTime.Text = estimatedTime.HasValue
+                ? $"Estimated Free Time: {estimatedTime.Value:yyyy-MM-dd HH:mm:ss}"
+                : "No estimated free time available.";
         }
     }
 }

@@ -45,5 +45,10 @@ namespace ParkingSystem.BLL
         {
             return _repository.CalculateCharges(parkingId);
         }
+
+        public DateTime? GetEstimatedFreeTime(int spaceID)
+        {
+            return _repository.GetEstimatedFreeTime(spaceID);
+        }
     }
 }

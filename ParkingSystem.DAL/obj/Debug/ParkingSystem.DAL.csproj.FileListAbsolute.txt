@@ -10,3 +10,15 @@ C:\Users\Ruchila\source\repos\ParkingManagement\ParkingSystem.DAL\obj\Debug\Park
 C:\Users\Ruchila\source\repos\ParkingManagement\ParkingSystem.DAL\obj\Debug\ParkingSystem.DAL.pdb
 C:\Users\Ruchila\source\repos\ParkingManagement\ParkingSystem.DAL\obj\Debug\ParkingSystem.DAL.csproj.AssemblyReference.cache
 C:\Users\Ruchila\source\repos\ParkingManagement\ParkingSystem.DAL\obj\Debug\ParkingS.D9473410.Up2Date
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.DAL\bin\Debug\ParkingSystem.DAL.dll.config
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.DAL\bin\Debug\ParkingSystem.DAL.dll
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.DAL\bin\Debug\ParkingSystem.DAL.pdb
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.DAL\bin\Debug\EntityFramework.dll
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.DAL\bin\Debug\EntityFramework.xml
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.DAL\obj\Debug\ParkingSystem.DAL.csproj.AssemblyReference.cache
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.DAL\obj\Debug\ParkingSystem.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.DAL\obj\Debug\ParkingS.D9473410.Up2Date
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.DAL\obj\Debug\ParkingSystem.DAL.dll
+C:\Users\Ruchila\source\repos\ParkingManagement1\ParkingSystem.DAL\obj\Debug\ParkingSystem.DAL.pdb

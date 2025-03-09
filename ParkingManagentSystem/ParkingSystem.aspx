@@ -33,30 +33,30 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
-        .form-container label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
+            .form-container label {
+                font-weight: bold;
+                display: block;
+                margin-bottom: 5px;
+            }
 
-        .form-container input, .form-container select, .form-container button {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+            .form-container input, .form-container select, .form-container button {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
 
-        .form-container button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
+            .form-container button {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+            }
 
-        .form-container button:hover {
-            background-color: #0056b3;
-        }
+                .form-container button:hover {
+                    background-color: #0056b3;
+                }
 
         .result {
             margin-top: 20px;
@@ -65,6 +65,26 @@
             border: 1px solid #7dce94;
             color: #2d572c;
             border-radius: 5px;
+        }
+    </style>
+    <style type="text/css">
+        .btn {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+
+        .text-info {
+            font-size: 16px;
+            color: green;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -77,7 +97,7 @@
                 <asp:Label ID="lblMessage" runat="server" CssClass="result" Visible="false"></asp:Label>
 
                 <label for="ddlGate">Select Gate ID:</label>
-                <asp:DropDownList ID="ddlGate" runat="server" OnSelectedIndexChanged ="loadSpaceInfo" AutoPostBack ="true"></asp:DropDownList>
+                <asp:DropDownList ID="ddlGate" runat="server" OnSelectedIndexChanged="loadSpaceInfo" AutoPostBack="true"></asp:DropDownList>
 
                 <label for="ddlSpace">Select Space ID:</label>
                 <asp:DropDownList ID="ddlSpace" runat="server"></asp:DropDownList>
@@ -87,12 +107,20 @@
 
                 <asp:Button ID="btnParkVehicle" runat="server" Text="Park Vehicle" OnClick="btnParkVehicle_Click" />
 
+                <asp:Button ID="btnGetFreeTime" runat="server" Text="Get Estimated Free Time" Visible="false" OnClick="btnGetFreeTime_Click" CssClass="btn btn-primary" />
+                <br />
+                <br />
+                <asp:Label ID="lblEstimatedFreeTime" runat="server" CssClass="text-info"></asp:Label>
                 <hr />
 
                 <h2>Unpark a Vehicle</h2>
                 <label for="txtParkingId">Parking ID:</label>
                 <asp:TextBox ID="txtParkingId" runat="server" placeholder="Enter Parking ID"></asp:TextBox>
                 <asp:Button ID="btnUnparkVehicle" runat="server" Text="Unpark Vehicle" OnClick="btnUnparkVehicle_Click" />
+
+                <hr />
+
+                <%--              <asp:DropDownList ID="ddlGates" runat="server"></asp:DropDownList>--%>
             </div>
         </div>
     </form>
